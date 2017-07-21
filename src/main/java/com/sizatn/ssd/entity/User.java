@@ -6,12 +6,16 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 
  * @desc user model
  * @author sizatn
  * @date Jun 10, 2017
  */
+@ApiModel(value = "User", description = "用户对象")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -1666005991691679694L;
@@ -46,6 +50,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "id")
+	@ApiModelProperty(value = "编号")
 	public int getId() {
 		return id;
 	}
@@ -55,6 +60,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "user_no")
+	@ApiModelProperty(value = "用户编号")
 	public String getUserNo() {
 		return userNo;
 	}
@@ -64,6 +70,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "user_name")
+	@ApiModelProperty(value = "用户名称")
 	public String getUserName() {
 		return userName;
 	}
@@ -73,6 +80,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "password")
+	@ApiModelProperty(value = "用户密码")
 	public String getPassword() {
 		return password;
 	}
@@ -82,6 +90,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "enabled")
+	@ApiModelProperty(value = "是否启用")
 	public String getEnabled() {
 		return enabled;
 	}
@@ -91,6 +100,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "phone")
+	@ApiModelProperty(value = "电话")
 	public String getPhone() {
 		return phone;
 	}
@@ -100,6 +110,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "mobile")
+	@ApiModelProperty(value = "移动电话")
 	public String getMobile() {
 		return mobile;
 	}
@@ -109,6 +120,7 @@ public class User implements Serializable {
 	}
 
 	@JsonProperty(value = "gender")
+	@ApiModelProperty(value = "性别")
 	public String getGender() {
 		return gender;
 	}
@@ -119,6 +131,7 @@ public class User implements Serializable {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonProperty(value = "create_date")
+	@ApiModelProperty(value = "创建时间")
 	public Timestamp getCreateDate() {
 		return createDate;
 	}
@@ -129,6 +142,7 @@ public class User implements Serializable {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonProperty(value = "update_date")
+	@ApiModelProperty(value = "更新时间")
 	public Timestamp getUpdateDate() {
 		return updateDate;
 	}

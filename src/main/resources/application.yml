@@ -1,3 +1,7 @@
+server: 
+  context-path: /ssd
+  port: 8090
+
 spring:
   datasource:
     url: jdbc:mysql://192.168.1.142:3306/main_smmsdemo

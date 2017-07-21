@@ -31,7 +31,7 @@ public class SwaggerConfig {
                 .description("更多Swagger相关文章请关注：https://swagger.io/")
                 .termsOfServiceUrl("https://swagger.io/")
                 .contact("Swagger")
-                .version("2.0")
+                .version("1.0")
                 .build();
     }
 
