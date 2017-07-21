@@ -4,7 +4,6 @@
 	
 	<groupId>com.tydic</groupId>
 	<artifactId>springboot-swagger-demo</artifactId>
-	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<name>springboot-swagger-demo Maven Webapp</name>
