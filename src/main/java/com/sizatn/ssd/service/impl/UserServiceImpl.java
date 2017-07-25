@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.sizatn.ssd.dao.UserMapper;
+import com.sizatn.ssd.dao.primary.UserMapper;
 import com.sizatn.ssd.entity.User;
 import com.sizatn.ssd.service.UserService;
 

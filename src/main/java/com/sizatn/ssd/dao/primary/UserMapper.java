@@ -1,4 +1,4 @@
-package com.sizatn.ssd.dao;
+package com.sizatn.ssd.dao.primary;
 
 import java.util.List;
 
