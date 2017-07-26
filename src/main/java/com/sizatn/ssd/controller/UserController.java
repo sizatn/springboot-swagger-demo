@@ -22,53 +22,53 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "用户管理APIs")
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value = "/user")
 public class UserController {
-	
+
 	@Resource(name = "userService")
 	private UserService userService;
 
-    @ApiOperation(value="获取用户列表", notes="")
-	@GetMapping(value = { "" })
-    public List<User> getUserList() {
-        return userService.getUserList();
-    }
+	@ApiOperation(value = "获取用户列表", notes = "")
+	@GetMapping(value = "")
+	public List<User> getUserList() {
+		return userService.getUserList();
+	}
 
-    @ApiOperation(value="创建用户", notes="根据User对象创建用户")
-    @ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
+	@ApiOperation(value = "创建用户", notes = "根据User对象创建用户")
+	@ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
 	@PostMapping(value = "")
-    public String postUser(@RequestBody User user) {
-        if (userService.saveUser(user) != 1) {
-        	return "fail";
+	public String postUser(@RequestBody User user) {
+		if (userService.saveUser(user) != 1) {
+			return "fail";
 		}
-        return "success";
-    }
+		return "success";
+	}
 
-    @ApiOperation(value="获取用户详细信息", notes="根据url的userNo来获取用户详细信息")
-    @ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
+	@ApiOperation(value = "获取用户详细信息", notes = "根据url的userNo来获取用户详细信息")
+	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@GetMapping(value = "/{userNo}")
-    public User getUser(@PathVariable String userNo) {
-        return userService.getUser(userNo);
-    }
+	public User getUser(@PathVariable String userNo) {
+		return userService.getUser(userNo);
+	}
 
-    @ApiOperation(value="更新用户详细信息", notes="根据User对象更新用户详细信息")
-    @ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
+	@ApiOperation(value = "更新用户详细信息", notes = "根据User对象更新用户详细信息")
+	@ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
 	@PutMapping(value = "")
-    public String putUser(@RequestBody User user) {
-        if (userService.updateUser(user) != 1) {
-        	return "fail";
+	public String putUser(@RequestBody User user) {
+		if (userService.updateUser(user) != 1) {
+			return "fail";
 		}
-        return "success";
-    }
+		return "success";
+	}
 
-    @ApiOperation(value="删除用户", notes="根据url的userNo来指定删除对象")
-    @ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
+	@ApiOperation(value = "删除用户", notes = "根据url的userNo来指定删除对象")
+	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@DeleteMapping(value = "/{userNo}")
-    public String deleteUser(@PathVariable String userNo) {
-        if (userService.deleteUser(userNo) != 1) {
-        	return "fail";
+	public String deleteUser(@PathVariable String userNo) {
+		if (userService.deleteUser(userNo) != 1) {
+			return "fail";
 		}
-        return "success";
-    }
+		return "success";
+	}
 
 }
