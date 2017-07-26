@@ -10,10 +10,10 @@ public interface UserService {
 
 	int saveUser(User user);
 
-	User getUser(String id);
+	User getUser(String userNo);
 
 	int updateUser(User user);
 
-	int deleteUser(String id);
+	int deleteUser(String userNo);
 
 }

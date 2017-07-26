@@ -44,14 +44,14 @@ public class UserController {
         return "success";
     }
 
-    @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
+    @ApiOperation(value="获取用户详细信息", notes="根据url的userNo来获取用户详细信息")
     @ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@GetMapping(value = "/{userNo}")
     public User getUser(@PathVariable String userNo) {
         return userService.getUser(userNo);
     }
 
-    @ApiOperation(value="更新用户详细信息", notes="根据url的id来指定更新对象，并根据传过来的user信息来更新用户详细信息")
+    @ApiOperation(value="更新用户详细信息", notes="根据User对象更新用户详细信息")
     @ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
 	@PutMapping(value = "")
     public String putUser(@RequestBody User user) {
@@ -61,7 +61,7 @@ public class UserController {
         return "success";
     }
 
-    @ApiOperation(value="删除用户", notes="根据url的id来指定删除对象")
+    @ApiOperation(value="删除用户", notes="根据url的userNo来指定删除对象")
     @ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@DeleteMapping(value = "/{userNo}")
     public String deleteUser(@PathVariable String userNo) {

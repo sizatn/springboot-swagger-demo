@@ -3,6 +3,7 @@ package com.sizatn.ssd.dao.primary;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.sizatn.ssd.entity.User;
 
@@ -11,12 +12,12 @@ public interface UserMapper {
 
 	List<User> getUserList();
 
-	int saveUser(User user);
+	int saveUser(@Param(value = "user") User user);
 
-	User getUser(String userNo);
+	User getUser(@Param(value = "userNo") String userNo);
 
-	int updateUser(User user);
+	int updateUser(@Param(value = "user") User user);
 
-	int deleteUser(String userNo);
+	int deleteUser(@Param(value = "userNo") String userNo);
 
 }

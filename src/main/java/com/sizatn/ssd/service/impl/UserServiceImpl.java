@@ -12,10 +12,10 @@ import com.sizatn.ssd.service.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-	
+
 	@Resource(name = "userMapper")
 	private UserMapper userMapper;
-	
+
 	@Override
 	public List<User> getUserList() {
 		return userMapper.getUserList();
@@ -27,18 +27,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String id) {
-		return userMapper.getUser(id);
+	public User getUser(String userNo) {
+		return userMapper.getUser(userNo);
 	}
 
 	@Override
 	public int updateUser(User user) {
 		return userMapper.updateUser(user);
 	}
-	
+
 	@Override
-	public int deleteUser(String id) {
-		return userMapper.deleteUser(id);
+	public int deleteUser(String userNo) {
+		return userMapper.deleteUser(userNo);
 	}
 
 }
