@@ -14,7 +14,7 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP" />
 	</resultMap>
 
-	<select id="getUserList" resultMap="BaseResultMap">
+	<select id="getUserList" resultType="java.util.HashMap">
 		SELECT * FROM user
 	</select>
 	
@@ -23,7 +23,7 @@
 		(#{user.userNo}, #{user.userName}, #{user.password}, #{user.gender}, #{user.phone}, #{user.mobile}, #{user.enabled}, NOW(), NOW())
 	</insert>
 	
-	<select id="getUser" resultMap="BaseResultMap">
+	<select id="getUser" resultType="java.util.HashMap">
 		SELECT * FROM user WHERE user_no = #{userNo}
 	</select>
 	

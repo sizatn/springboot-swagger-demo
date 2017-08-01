@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInterceptor;
 
 @Configuration
 public class PrimaryDataSourceConfig {
@@ -49,15 +49,14 @@ public class PrimaryDataSourceConfig {
 		sessionFactory.setDataSource(primaryDataSource);
 		sessionFactory.setTypeAliasesPackage(PrimaryDataSourceConfig.TYPE_ALIASES_PACKAGE);
 		
-		PageHelper pageHelper = new PageHelper();
-		Properties properties = new Properties();
-		properties.setProperty("dialect", "mysql");
-		properties.setProperty("reasonable", "true");
-		properties.setProperty("supportMethodsArguments", "true");
-		properties.setProperty("returnPageInfo", "check");
-		properties.setProperty("params", "count=countSql");
-		pageHelper.setProperties(properties);
-//		sessionFactory.setPlugins(new Interceptor[] { (Interceptor) pageHelper });
+//		PageInterceptor pageInterceptor = new PageInterceptor();
+//		Properties properties = new Properties();
+//		properties.setProperty("helperDialect", "mysql");
+//		properties.setProperty("reasonable", "true");
+//		properties.setProperty("supportMethodsArguments", "true");
+//		properties.setProperty("params", "count=countSql");
+//		pageInterceptor.setProperties(properties);
+//		sessionFactory.setPlugins(new Interceptor[] { pageInterceptor });
 		
 		sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(PrimaryDataSourceConfig.MAPPER_LOCATION));
 		return sessionFactory.getObject();

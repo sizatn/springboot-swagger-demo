@@ -1,6 +1,7 @@
 package com.sizatn.ssd.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.PageInfo;
 import com.sizatn.ssd.entity.User;
 import com.sizatn.ssd.service.UserService;
 
@@ -30,7 +32,7 @@ public class UserController {
 
 	@ApiOperation(value = "获取用户列表", notes = "")
 	@GetMapping(value = "")
-	public List<User> getUserList() {
+	public PageInfo<Map<String, Object>> getUserList() {
 		return userService.getUserList();
 	}
 
@@ -47,7 +49,7 @@ public class UserController {
 	@ApiOperation(value = "获取用户详细信息", notes = "根据url的userNo来获取用户详细信息")
 	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@GetMapping(value = "/{userNo}")
-	public User getUser(@PathVariable String userNo) {
+	public List<Map<String, Object>> getUser(@PathVariable String userNo) {
 		return userService.getUser(userNo);
 	}
 

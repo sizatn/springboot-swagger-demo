@@ -4,7 +4,7 @@ server:
 
 primary: 
   datasource:
-    url: jdbc:mysql://192.168.1.142:3306/main_smmsdemo
+    url: jdbc:mysql://200.20.2.103:3306/main_smmsdemo
     username: root
     password: root
     # 使用druid数据源
@@ -50,8 +50,8 @@ secondary:
 #  mapperLocations: classpath:mapper/*.xml
 #  typeAliasesPackage: com.sizatn.ssd.entity
 
-#pagehelper:
-#    helperDialect: mysql
-#    reasonable: true
-#    supportMethodsArguments: true
-#    params: count=countSql
+pagehelper: 
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql

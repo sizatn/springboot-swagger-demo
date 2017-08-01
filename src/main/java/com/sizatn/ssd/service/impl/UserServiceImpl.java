@@ -1,11 +1,14 @@
 package com.sizatn.ssd.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sizatn.ssd.dao.primary.UserMapper;
 import com.sizatn.ssd.entity.User;
 import com.sizatn.ssd.service.UserService;
@@ -17,8 +20,11 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public List<User> getUserList() {
-		return userMapper.getUserList();
+	public PageInfo<Map<String, Object>> getUserList() {
+		PageHelper.startPage(1, 1);
+		List<Map<String, Object>> list = userMapper.getUserList();
+		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
+		return pageInfo;
 	}
 
 	@Override
@@ -27,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(String userNo) {
+	public List<Map<String, Object>> getUser(String userNo) {
 		return userMapper.getUser(userNo);
 	}
 
