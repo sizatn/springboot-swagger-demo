@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
@@ -25,7 +26,7 @@ public class PrimaryDataSourceConfig {
 
 	@Primary
 	@Bean(name = "primaryDataSource")
-	@ConfigurationProperties(prefix="primary.datasource")
+	@ConfigurationProperties(prefix = "primary.datasource")
 	public DataSource primaryDataSource() {
 //		return new DruidDataSource();
 		return DataSourceBuilder.create().build();
@@ -57,6 +58,7 @@ public class PrimaryDataSourceConfig {
 		return sessionFactory.getObject();
 	}
 	
+	@Primary
 	@Bean(name = "primaryMapperScannerConfigurer")
 	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
 		MapperScannerConfigurer msc = new MapperScannerConfigurer();
@@ -64,4 +66,10 @@ public class PrimaryDataSourceConfig {
         msc.setBasePackage(PrimaryDataSourceConfig.PACKAGE);
         return msc;
     }
+	
+	@Primary
+	@Bean(name = "primaryJdbcTemplate")
+	public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource primaryDataSource) {
+		return new JdbcTemplate(primaryDataSource);
+	}
 }
