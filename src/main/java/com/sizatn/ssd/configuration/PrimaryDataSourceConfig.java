@@ -1,4 +1,4 @@
-package com.sizatn.ssd.datasource;
+package com.sizatn.ssd.configuration;
 
 import javax.sql.DataSource;
 
@@ -15,6 +15,12 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+/**
+ * 
+ * @desc 主数据源配置
+ * @author sizatn
+ * @date Aug 9, 2017
+ */
 @Configuration
 public class PrimaryDataSourceConfig {
 
