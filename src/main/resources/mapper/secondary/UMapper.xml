@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sizatn.ssd.dao.primary.UserMapper">
+<mapper namespace="com.sizatn.ssd.dao.secondary.UMapper">
 	<resultMap id="BaseResultMap" type="com.sizatn.ssd.entity.User">
 		<id property="id" column="ID" jdbcType="INTEGER" />
         <result property="userNo" column="user_no" jdbcType="VARCHAR" />
@@ -14,26 +14,26 @@
         <result property="updateDate" column="update_date" jdbcType="TIMESTAMP" />
 	</resultMap>
 
-	<select id="getUserList" resultMap="BaseResultMap">
+	<!-- <select id="getUserList" resultMap="BaseResultMap">
 		SELECT * FROM user
-	</select>
+	</select> -->
 	
-	<insert id="saveUser">
+	<!-- <insert id="saveUser">
 		INSERT INTO user (user_no, user_name, password, gender, phone, mobile, enabled, create_date, update_date) VALUES 
 		(#{user.userNo}, #{user.userName}, #{user.password}, #{user.gender}, #{user.phone}, #{user.mobile}, #{user.enabled}, NOW(), NOW())
-	</insert>
+	</insert> -->
 	
-	<select id="getUser" resultMap="BaseResultMap">
+	<!-- <select id="getUser" resultMap="BaseResultMap">
 		SELECT * FROM user WHERE user_no = #{userNo}
-	</select>
+	</select> -->
 	
-	<update id="updateUser">
+	<!-- <update id="updateUser">
         UPDATE user SET user_name = #{user.userName}, password = #{user.password}, gender = #{user.gender},
         phone = #{user.phone}, mobile = #{user.mobile}, enabled = #{user.enabled}, update_date = NOW() WHERE user_no = #{user.userNo}
-	</update>
+	</update> -->
 	
-	<delete id="deleteUser">
+	<!-- <delete id="deleteUser">
 		DELETE FROM user WHERE user_no = #{userNo}
-	</delete>
+	</delete> -->
 	
 </mapper>

@@ -1,6 +1,5 @@
 package com.sizatn.ssd.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -49,7 +48,7 @@ public class UserController {
 	@ApiOperation(value = "获取用户详细信息", notes = "根据url的userNo来获取用户详细信息")
 	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@GetMapping(value = "/{userNo}")
-	public List<Map<String, Object>> getUser(@PathVariable String userNo) {
+	public Map<String, Object> getUser(@PathVariable String userNo) {
 		return userService.getUser(userNo);
 	}
 

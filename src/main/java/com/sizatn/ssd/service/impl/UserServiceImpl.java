@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public PageInfo<Map<String, Object>> getUserList() {
-		PageHelper.startPage(1, 1);
+		PageHelper.startPage(1, 2);
 		List<Map<String, Object>> list = userMapper.getUserList();
 		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
 		return pageInfo;
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getUser(String userNo) {
+	public Map<String, Object> getUser(String userNo) {
 		return userMapper.getUser(userNo);
 	}
 
