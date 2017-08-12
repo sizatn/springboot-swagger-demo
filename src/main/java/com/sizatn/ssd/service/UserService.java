@@ -1,6 +1,5 @@
 package com.sizatn.ssd.service;
 
-import java.util.List;
 import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
@@ -12,7 +11,7 @@ public interface UserService {
 
 	int saveUser(User user);
 
-	List<Map<String, Object>> getUser(String userNo);
+	Map<String, Object> getUser(String userNo);
 
 	int updateUser(User user);
 

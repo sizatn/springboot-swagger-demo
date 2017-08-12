@@ -10,7 +10,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 /**
  * 
@@ -22,8 +25,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 public class SecondaryDataSourceConfig {
 
 	// 精确到 secondary 目录，以便跟其他数据源隔离
-	static final String PACKAGE = "org.spring.springboot.dao.master";
-	static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
+	private static final String PACKAGE = "org.spring.springboot.dao.secondary";
+	private static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
+	private static final String SESSION_FACTORY_BEAN_NAME = "secondarySqlSessionFactory";
+	private static final String TYPE_ALIASES_PACKAGE = "com.sizatn.ssd.entity";
 
 	@Bean(name = "secondaryDataSource")
 	@ConfigurationProperties(prefix = "secondary.datasource")
@@ -41,8 +46,21 @@ public class SecondaryDataSourceConfig {
 	public SqlSessionFactory secondarySqlSessionFactory(@Qualifier("secondaryDataSource") DataSource secondaryDataSource) throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(secondaryDataSource);
-//		sessionFactory.setPlugins(new Interceptor[] {});
+		sessionFactory.setTypeAliasesPackage(SecondaryDataSourceConfig.TYPE_ALIASES_PACKAGE);
 		sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(SecondaryDataSourceConfig.MAPPER_LOCATION));
 		return sessionFactory.getObject();
+	}
+	
+	@Bean(name = "secondaryMapperScannerConfigurer")
+	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
+		MapperScannerConfigurer msc = new MapperScannerConfigurer();
+        msc.setSqlSessionFactoryBeanName(SecondaryDataSourceConfig.SESSION_FACTORY_BEAN_NAME);
+        msc.setBasePackage(SecondaryDataSourceConfig.PACKAGE);
+        return msc;
+    }
+	
+	@Bean(name = "secondaryJdbcTemplate")
+	public JdbcTemplate primaryJdbcTemplate(@Qualifier("secondaryDataSource") DataSource secondaryDataSource) {
+		return new JdbcTemplate(secondaryDataSource);
 	}
 }

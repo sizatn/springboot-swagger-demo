@@ -26,7 +26,7 @@ primary:
 
 secondary: 
   datasource:
-    url: jdbc:mysql://192.168.1.142:3306/main_smmsdemo
+    url: jdbc:mysql://200.20.2.103:3306/target_smmsdemo
     username: root
     password: root
     # 使用druid数据源
@@ -51,7 +51,11 @@ secondary:
 #  typeAliasesPackage: com.sizatn.ssd.entity
 
 pagehelper: 
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    params: count=countSql
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+    
+logging: 
+  level: debug
+    
