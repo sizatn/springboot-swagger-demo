@@ -47,5 +47,4 @@ public class UServiceImpl implements UserService {
 		return uMapper.deleteUser(userNo);
 	}
 
-	
 }
