@@ -31,11 +31,29 @@ public class SecondaryDataSourceConfig {
 	private static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
 	private static final String SESSION_FACTORY_BEAN_NAME = "secondarySqlSessionFactory";
 	private static final String TYPE_ALIASES_PACKAGE = "com.sizatn.ssd.entity";
+	
+//	private String url;
+//	private String username;
+//	private String password;
+//	private String driverClassName;
+//	private Class<DataSource> type;
+	
+//	@Primary
+//	@Bean(name = "secondaryDataSourceProperties")
+//	public DataSourceProperties secondaryDataSourceProperties() {
+//		DataSourceProperties properties = new DataSourceProperties();
+//		properties.setUrl(url);
+//		properties.setUsername(username);
+//		properties.setPassword(password);
+//		properties.setDriverClassName(driverClassName);
+//		properties.setType(type);
+//	    return properties;
+//	}
 
 	@Bean(name = "secondaryDataSource")
-	@ConfigurationProperties(value = "secondary.datasource")
+	@ConfigurationProperties(prefix = "spring.datasource.secondary")
 	public DataSource secondaryDataSource() {
-		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+		return DataSourceBuilder.create().build();
 	}
 
 	@Bean(name = "secondaryTransactionManager")
