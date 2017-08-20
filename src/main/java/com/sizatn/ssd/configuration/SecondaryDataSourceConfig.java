@@ -13,6 +13,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+import com.alibaba.druid.pool.DruidDataSource;
+
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 /**
@@ -25,16 +27,15 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 public class SecondaryDataSourceConfig {
 
 	// 精确到 secondary 目录，以便跟其他数据源隔离
-	private static final String PACKAGE = "org.spring.springboot.dao.secondary";
+	private static final String PACKAGE = "com.sizatn.ssd.dao.secondary";
 	private static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
 	private static final String SESSION_FACTORY_BEAN_NAME = "secondarySqlSessionFactory";
 	private static final String TYPE_ALIASES_PACKAGE = "com.sizatn.ssd.entity";
 
 	@Bean(name = "secondaryDataSource")
-	@ConfigurationProperties(prefix = "secondary.datasource")
+	@ConfigurationProperties(value = "secondary.datasource")
 	public DataSource secondaryDataSource() {
-//		return new DruidDataSource();
-		return DataSourceBuilder.create().build();
+		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 	}
 
 	@Bean(name = "secondaryTransactionManager")

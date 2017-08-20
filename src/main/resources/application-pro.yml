@@ -1,0 +1,72 @@
+server: 
+  context-path: /ssd
+  port: 8090
+
+primary: 
+  datasource:
+    url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
+    username: root
+    password: root
+    # 使用druid数据源
+    #type: com.alibaba.druid.pool.DruidDataSource
+    #driverClassName: com.mysql.jdbc.Driver
+    #filters: stat
+    #maxActive: 20
+    #initialSize: 1
+    #maxWait: 60000
+    #minIdle: 1
+    #timeBetweenEvictionRunsMillis: 60000
+    #minEvictableIdleTimeMillis: 300000
+    #validationQuery: select 'x'
+    #testWhileIdle: true
+    #testOnBorrow: false
+    #testOnReturn: false
+    #poolPreparedStatements: true
+    #maxOpenPreparedStatements: 20
+
+secondary: 
+  datasource:
+    url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    #filters: stat
+    #maxActive: 20
+    #initialSize: 1
+    #maxWait: 60000
+    #minIdle: 1
+    #timeBetweenEvictionRunsMillis: 60000
+    #minEvictableIdleTimeMillis: 300000
+    #validationQuery: select 'x'
+    #testWhileIdle: true
+    #testOnBorrow: false
+    #testOnReturn: false
+    #poolPreparedStatements: true
+    #maxOpenPreparedStatements: 20
+      
+#mybatis: 
+#  mapperLocations: classpath:mapper/*.xml
+#  typeAliasesPackage: com.sizatn.ssd.entity
+
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+    
+logging: 
+  config: classpath:logback-boot.xml
+  
+spring: 
+  http: 
+    encoding: 
+      charset: UTF-8
+    jackson: 
+      date-format: yyyy-MM-dd HH:mm:ss 
+      timeZone: Asia/Shanghai
+    resources: 
+      chain: 
+        enabled: true
+
