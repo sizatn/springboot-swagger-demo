@@ -3,11 +3,47 @@ server:
   port: 8090
 
 spring: 
-  datasource: 
-    url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
+  datasource:
+    primary:  
+      url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      #type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 10
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 5
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+    secondary: 
+      url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      #type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 10
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 5
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
   http: 
     encoding: 
       charset: UTF-8
@@ -17,13 +53,6 @@ spring:
     resources: 
       chain: 
         enabled: true
-
-secondary: 
-  datasource: 
-      url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
-      username: root
-      password: root
-      driverClassName: com.mysql.jdbc.Driver
       
 #mybatis: 
 #  mapperLocations: classpath:mapper/*.xml

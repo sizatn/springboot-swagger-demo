@@ -3,7 +3,7 @@ package com.sizatn.ssd;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.sizatn.ssd.*"})
+@SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {

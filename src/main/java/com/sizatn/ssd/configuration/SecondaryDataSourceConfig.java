@@ -2,7 +2,6 @@ package com.sizatn.ssd.configuration;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,7 +28,7 @@ public class SecondaryDataSourceConfig {
 
 	// 精确到 secondary 目录，以便跟其他数据源隔离
 	private static final String PACKAGE = "com.sizatn.ssd.dao.secondary";
-	private static final String MAPPER_LOCATION = "classpath*:mapper/secondary/*.xml";
+	private static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
 	private static final String SESSION_FACTORY_BEAN_NAME = "secondarySqlSessionFactory";
 	private static final String TYPE_ALIASES_PACKAGE = "com.sizatn.ssd.entity";
 	
@@ -75,8 +74,8 @@ public class SecondaryDataSourceConfig {
 	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
 		MapperScannerConfigurer msc = new MapperScannerConfigurer();
         msc.setSqlSessionFactoryBeanName(SecondaryDataSourceConfig.SESSION_FACTORY_BEAN_NAME);
+        // 与接口上的@Mapper注解作用相同，选一中配置方式即可
         msc.setBasePackage(SecondaryDataSourceConfig.PACKAGE);
-        msc.setAnnotationClass(Mapper.class);
         return msc;
     }
 	
