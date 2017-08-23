@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.sizatn.ssd.entity.User;
 
 @Mapper
-public interface UMapper {
+public interface UrMapper {
 
 	List<Map<String, Object>> getUserList();
 

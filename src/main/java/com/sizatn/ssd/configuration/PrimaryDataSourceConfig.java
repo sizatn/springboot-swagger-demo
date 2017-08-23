@@ -2,6 +2,7 @@ package com.sizatn.ssd.configuration;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
+import com.alibaba.druid.pool.DruidDataSource;
 
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
@@ -27,7 +30,7 @@ public class PrimaryDataSourceConfig {
 
 	// 精确到 primary 目录，以便跟其他数据源隔离
 	private static final String PACKAGE = "com.sizatn.ssd.dao.primary";
-	private static final String MAPPER_LOCATION = "classpath:mapper/primary/*.xml";
+	private static final String MAPPER_LOCATION = "classpath*:mapper/primary/*.xml";
 	private static final String SESSION_FACTORY_BEAN_NAME = "primarySqlSessionFactory";
 	private static final String TYPE_ALIASES_PACKAGE = "com.sizatn.ssd.entity";
 	
@@ -50,23 +53,23 @@ public class PrimaryDataSourceConfig {
 //	}
 
 	@Primary
-	@Bean(name = "primaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.primary")
+	@Bean(name = "dataSource")
+	@ConfigurationProperties(prefix = "spring.datasource")
 	public DataSource primaryDataSource() {
-		return DataSourceBuilder.create().build();
+		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 	}
 
 	@Primary
-	@Bean(name = "primaryTransactionManager")
+	@Bean(name = "transactionManager")
 	public DataSourceTransactionManager masterTransactionManager() {
 		return new DataSourceTransactionManager(primaryDataSource());
 	}
 
 	@Primary
-	@Bean(name = "primarySqlSessionFactory")
-	public SqlSessionFactory primarySqlSessionFactory(@Qualifier("primaryDataSource") DataSource primaryDataSource) throws Exception {
+	@Bean(name = "sqlSessionFactory")
+	public SqlSessionFactory primarySqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-		sessionFactory.setDataSource(primaryDataSource);
+		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setTypeAliasesPackage(PrimaryDataSourceConfig.TYPE_ALIASES_PACKAGE);
 		
 //		PageInterceptor pageInterceptor = new PageInterceptor();
@@ -83,17 +86,18 @@ public class PrimaryDataSourceConfig {
 	}
 	
 	@Primary
-	@Bean(name = "primaryMapperScannerConfigurer")
+	@Bean(name = "mapperScannerConfigurer")
 	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
 		MapperScannerConfigurer msc = new MapperScannerConfigurer();
         msc.setSqlSessionFactoryBeanName(PrimaryDataSourceConfig.SESSION_FACTORY_BEAN_NAME);
         msc.setBasePackage(PrimaryDataSourceConfig.PACKAGE);
+        msc.setAnnotationClass(Mapper.class);
         return msc;
     }
 	
 	@Primary
-	@Bean(name = "primaryJdbcTemplate")
-	public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource primaryDataSource) {
-		return new JdbcTemplate(primaryDataSource);
+	@Bean(name = "jdbcTemplate")
+	public JdbcTemplate primaryJdbcTemplate(@Qualifier("dataSource") DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
 	}
 }

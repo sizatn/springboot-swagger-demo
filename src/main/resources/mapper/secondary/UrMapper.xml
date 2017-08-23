@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sizatn.ssd.dao.secondary.UMapper">
+<mapper namespace="com.sizatn.ssd.dao.secondary.UrMapper">
 	<resultMap id="BaseResultMap" type="com.sizatn.ssd.entity.User">
 		<id property="id" column="ID" jdbcType="INTEGER" />
         <result property="userNo" column="user_no" jdbcType="VARCHAR" />

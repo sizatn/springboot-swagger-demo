@@ -4,22 +4,23 @@ server:
 
 spring: 
   datasource: 
-    primary: 
-      url: jdbc:mysql://192.168.1.139:3306/main_smmsdemo
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
-    secondary: 
-      url: jdbc:mysql://200.20.2.103:3306/target_smmsdemo
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.139:3306/main_smmsdemo
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+
+secondary: 
+  datasource: 
+    url: jdbc:mysql://192.168.1.139:3306/target_smmsdemo
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
   http: 
     encoding: 
-      charset: UTF-8
+      charset: utf-8
     jackson: 
-      date-format: yyyy-MM-dd HH:mm:ss 
-      timeZone: Asia/Shanghai
+      date-format: yyyy-mm-dd hh:mm:ss 
+      timezone: asia/shanghai
     resources: 
       chain: 
         enabled: true

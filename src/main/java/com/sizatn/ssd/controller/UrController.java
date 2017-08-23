@@ -23,23 +23,23 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "用户管理APIs")
 @RestController
-@RequestMapping(value = "/u")
-public class UController {
+@RequestMapping(value = "/ur")
+public class UrController {
 
-	@Resource(name = "uService")
-	private UserService uService;
+	@Resource(name = "urService")
+	private UserService urService;
 
 	@ApiOperation(value = "获取用户列表", notes = "")
 	@GetMapping(value = "")
 	public PageInfo<Map<String, Object>> getUserList() {
-		return uService.getUserList();
+		return urService.getUserList();
 	}
 
 	@ApiOperation(value = "创建用户", notes = "根据User对象创建用户")
 	@ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
 	@PostMapping(value = "")
 	public String postUser(@RequestBody User user) {
-		if (uService.saveUser(user) != 1) {
+		if (urService.saveUser(user) != 1) {
 			return "fail";
 		}
 		return "success";
@@ -49,14 +49,14 @@ public class UController {
 	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@GetMapping(value = "/{userNo}")
 	public Map<String, Object> getUser(@PathVariable String userNo) {
-		return uService.getUser(userNo);
+		return urService.getUser(userNo);
 	}
 
 	@ApiOperation(value = "更新用户详细信息", notes = "根据User对象更新用户详细信息")
 	@ApiImplicitParam(name = "user", value = "用户对象", required = true, dataType = "User")
 	@PutMapping(value = "")
 	public String putUser(@RequestBody User user) {
-		if (uService.updateUser(user) != 1) {
+		if (urService.updateUser(user) != 1) {
 			return "fail";
 		}
 		return "success";
@@ -66,7 +66,7 @@ public class UController {
 	@ApiImplicitParam(name = "userNo", value = "用户编号", required = true, dataType = "String")
 	@DeleteMapping(value = "/{userNo}")
 	public String deleteUser(@PathVariable String userNo) {
-		if (uService.deleteUser(userNo) != 1) {
+		if (urService.deleteUser(userNo) != 1) {
 			return "fail";
 		}
 		return "success";

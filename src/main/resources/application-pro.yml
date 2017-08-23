@@ -3,17 +3,11 @@ server:
   port: 8090
 
 spring: 
-  datasource:
-    primary: 
-      url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
-    secondary: 
-      url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
-      username: root
-      password: root
-      driver-class-name: com.mysql.jdbc.Driver
+  datasource: 
+    url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
   http: 
     encoding: 
       charset: UTF-8
@@ -23,6 +17,13 @@ spring:
     resources: 
       chain: 
         enabled: true
+
+secondary: 
+  datasource: 
+      url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
       
 #mybatis: 
 #  mapperLocations: classpath:mapper/*.xml

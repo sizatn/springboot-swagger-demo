@@ -9,42 +9,42 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sizatn.ssd.dao.secondary.UMapper;
+import com.sizatn.ssd.dao.secondary.UrMapper;
 import com.sizatn.ssd.entity.User;
 import com.sizatn.ssd.service.UserService;
 
-@Service("uService")
-public class UServiceImpl implements UserService {
+@Service("urService")
+public class UrServiceImpl implements UserService {
 
-	@Resource(name = "uMapper")
-	private UMapper uMapper;
+	@Resource(name = "urMapper")
+	private UrMapper urMapper;
 
 	@Override
 	public PageInfo<Map<String, Object>> getUserList() {
 		PageHelper.startPage(1, 2);
-		List<Map<String, Object>> list = uMapper.getUserList();
+		List<Map<String, Object>> list = urMapper.getUserList();
 		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
 		return pageInfo;
 	}
 
 	@Override
 	public int saveUser(User user) {
-		return uMapper.saveUser(user);
+		return urMapper.saveUser(user);
 	}
 
 	@Override
 	public Map<String, Object> getUser(String userNo) {
-		return uMapper.getUser(userNo);
+		return urMapper.getUser(userNo);
 	}
 
 	@Override
 	public int updateUser(User user) {
-		return uMapper.updateUser(user);
+		return urMapper.updateUser(user);
 	}
 
 	@Override
 	public int deleteUser(String userNo) {
-		return uMapper.deleteUser(userNo);
+		return urMapper.deleteUser(userNo);
 	}
 
 }
