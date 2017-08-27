@@ -53,9 +53,10 @@ public class PrimaryDataSourceConfig {
 
 	@Primary
 	@Bean(name = "primaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.primary")
+	@ConfigurationProperties(prefix = "primary.datasource")
 	public DataSource primaryDataSource() {
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+//		return primaryDataSourceProperties().initializeDataSourceBuilder().type(DruidDataSource.class).build();
 	}
 
 	@Primary
@@ -89,7 +90,7 @@ public class PrimaryDataSourceConfig {
 	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
 		MapperScannerConfigurer msc = new MapperScannerConfigurer();
         msc.setSqlSessionFactoryBeanName(PrimaryDataSourceConfig.SESSION_FACTORY_BEAN_NAME);
-        // 与接口上的@Mapper注解作用相同，选一中配置方式即可
+        // 与接口上的@Mapper注解作用相同，选一种配置方式即可
         msc.setBasePackage(PrimaryDataSourceConfig.PACKAGE);
         return msc;
     }

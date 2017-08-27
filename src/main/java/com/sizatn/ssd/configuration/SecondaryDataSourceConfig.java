@@ -51,9 +51,10 @@ public class SecondaryDataSourceConfig {
 //	}
 
 	@Bean(name = "secondaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.secondary")
+	@ConfigurationProperties(prefix = "secondary.datasource")
 	public DataSource secondaryDataSource() {
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+//		return secondaryDataSourceProperties().initializeDataSourceBuilder().type(DruidDataSource.class).build();
 	}
 
 	@Bean(name = "secondaryTransactionManager")
@@ -74,7 +75,7 @@ public class SecondaryDataSourceConfig {
 	public MapperScannerConfigurer primaryMapperScannerConfigurer() {
 		MapperScannerConfigurer msc = new MapperScannerConfigurer();
         msc.setSqlSessionFactoryBeanName(SecondaryDataSourceConfig.SESSION_FACTORY_BEAN_NAME);
-        // 与接口上的@Mapper注解作用相同，选一中配置方式即可
+        // 与接口上的@Mapper注解作用相同，选一种配置方式即可
         msc.setBasePackage(SecondaryDataSourceConfig.PACKAGE);
         return msc;
     }
