@@ -51,7 +51,7 @@ public class SecondaryDataSourceConfig {
 //	}
 
 	@Bean(name = "secondaryDataSource")
-	@ConfigurationProperties(prefix = "secondary.datasource")
+	@ConfigurationProperties(prefix = "spring.datasource.secondary")
 	public DataSource secondaryDataSource() {
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 //		return secondaryDataSourceProperties().initializeDataSourceBuilder().type(DruidDataSource.class).build();

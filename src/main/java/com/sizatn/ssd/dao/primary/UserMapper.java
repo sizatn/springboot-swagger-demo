@@ -11,12 +11,14 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
+import org.springframework.cache.annotation.CachePut;
 
 import com.sizatn.ssd.entity.User;
 import com.sizatn.ssd.provider.UserProvider;
 
 public interface UserMapper {
 
+	@CachePut(value = "users")
 	@Select("SELECT * FROM user")
 	@Results({ @Result(property = "id", column = "id"), 
 		@Result(property = "userNo", column = "user_no"),

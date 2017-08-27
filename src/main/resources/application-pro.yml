@@ -2,51 +2,48 @@ server:
   context-path: /ssd
   port: 8090
 
-primary: 
-  datasource:
-    url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
-    # 使用druid数据源
-    #type: com.alibaba.druid.pool.DruidDataSource
-    filters: stat
-    maxActive: 10
-    initialSize: 1
-    maxWait: 60000
-    minIdle: 5
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: select 1 from dual
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
-      
-secondary: 
-  datasource: 
-    url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
-    username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
-    # 使用druid数据源
-    #type: com.alibaba.druid.pool.DruidDataSource
-    filters: stat
-    maxActive: 10
-    initialSize: 1
-    maxWait: 60000
-    minIdle: 5
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: select 1 from dual
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
-    maxOpenPreparedStatements: 20
-
 spring: 
+  datasource:
+    primary: 
+      url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      #type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 10
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 5
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from dual
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+    secondary: 
+      url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      # 使用druid数据源
+      #type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 10
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 5
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from dual
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
   http: 
     encoding: 
       charset: utf-8
@@ -56,6 +53,25 @@ spring:
     resources: 
       chain: 
         enabled: true
+  cache: 
+    type: REDIS
+  redis: 
+    database: 0
+    hostName: 192.168.43.216
+    port: 6379
+    # Login password of the redis server.
+    password: 
+    timeout: 0
+    pool: 
+      max-active: 8
+      max-idle: 8
+      min-idle: 0
+      max-wait: -1
+    sentinel: 
+      # Name of Redis server.
+      master:
+      # Comma-separated list of host:port pairs. 
+      nodes: 
       
 #mybatis: 
 #  mapperLocations: classpath:mapper/*.xml
@@ -69,4 +85,3 @@ pagehelper:
     
 logging: 
   config: classpath:logback-boot.xml
-  

@@ -53,7 +53,7 @@ public class PrimaryDataSourceConfig {
 
 	@Primary
 	@Bean(name = "primaryDataSource")
-	@ConfigurationProperties(prefix = "primary.datasource")
+	@ConfigurationProperties(prefix = "spring.datasource.primary")
 	public DataSource primaryDataSource() {
 		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 //		return primaryDataSourceProperties().initializeDataSourceBuilder().type(DruidDataSource.class).build();
