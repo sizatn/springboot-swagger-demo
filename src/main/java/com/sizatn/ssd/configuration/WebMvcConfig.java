@@ -6,12 +6,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * 
- * @desc Cross-origin resource sharing config
+ * @desc 
  * @author sizatn
  * @date Aug 9, 2017
  */
 @Configuration
-public class CorsConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
