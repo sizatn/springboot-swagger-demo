@@ -27,6 +27,7 @@
 		<netty.version>4.0.50.Final</netty.version>
 		<commons.lang3.version>3.6</commons.lang3.version>
 		<redis.boot.version>1.4.7.RELEASE</redis.boot.version>
+		<shiro.version>1.4.0</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -85,15 +86,15 @@
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-net</artifactId>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>net.sf.ehcache</groupId>
-		    <artifactId>ehcache</artifactId>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 
 		<dependency>
@@ -148,6 +149,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

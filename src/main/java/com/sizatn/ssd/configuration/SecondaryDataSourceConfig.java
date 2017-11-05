@@ -26,7 +26,7 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 @Configuration
 public class SecondaryDataSourceConfig {
 
-	// 精确到 secondary 目录，以便跟其他数据源隔离
+	/** 精确到 secondary 目录，以便跟其他数据源隔离 */ 
 	private static final String PACKAGE = "com.sizatn.ssd.dao.secondary";
 	private static final String MAPPER_LOCATION = "classpath:mapper/secondary/*.xml";
 	private static final String SESSION_FACTORY_BEAN_NAME = "secondarySqlSessionFactory";

@@ -24,10 +24,14 @@ public class User implements Serializable {
 	private String userNo;
 	private String userName;
 	private String password;
-	private String gender;	// male:"0" female:"1"
+	
+	/** male:"0" female:"1" */
+	private String gender;
 	private String phone;
 	private String mobile;
-	private String enabled;	// yes:"0" no:"1"
+	
+	/** yes:"0" no:"1" */
+	private String enabled;
 	private Timestamp createDate;
 	private Timestamp updateDate;
 
