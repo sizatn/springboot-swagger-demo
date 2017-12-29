@@ -2,7 +2,6 @@ package com.sizatn.ssd.configuration;
 
 import java.lang.reflect.Method;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.KeyGenerator;
@@ -10,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -21,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 public class RedisCacheConfig extends CachingConfigurerSupport {
+	
 	@Bean
 	@Override
 	public KeyGenerator keyGenerator() {
@@ -36,12 +35,6 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 				return sb.toString();
 			}
 		};
-	}
-
-	@Bean
-	@ConfigurationProperties(prefix = "spring.redis")
-	public JedisConnectionFactory redisConnectionFactory() {
-		return new JedisConnectionFactory();
 	}
 
 	@Bean

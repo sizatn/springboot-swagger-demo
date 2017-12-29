@@ -59,15 +59,15 @@ spring:
       config: classpath:ehcache.xml
   dubbo: 
     scan: com.sizatn.ssd.dubbo
-
-dubbo: 
-  applicationName: provider
-  registryProtocol: zookeeper
-  registryAddress: 200.20.2.160
-  registryPort: 2181
-  scan: com.sizatn.ssd.dubbo
-  protocolName: dubbo
-  protocolPort: 20880
+    application: 
+      name: provider
+    registry: 
+      protocol: zookeeper
+      address: 200.20.2.160
+      port: 2181
+    protocol: 
+      name: dubbo
+      port: 20880
       
 #mybatis: 
 #  mapperLocations: classpath:mapper/*.xml
