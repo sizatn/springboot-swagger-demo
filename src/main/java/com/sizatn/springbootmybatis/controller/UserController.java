@@ -1,4 +1,4 @@
-package com.sizatn.ssd.controller;
+package com.sizatn.springbootmybatis.controller;
 
 import java.util.Map;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.sizatn.ssd.entity.User;
-import com.sizatn.ssd.service.UserService;
+import com.sizatn.springbootmybatis.entity.User;
+import com.sizatn.springbootmybatis.service.UserService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

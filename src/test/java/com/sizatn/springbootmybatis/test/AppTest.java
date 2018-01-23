@@ -1,4 +1,4 @@
-package com.sizatn.ssd.test;
+package com.sizatn.springbootmybatis.test;
 
 import static org.junit.Assert.*;
 

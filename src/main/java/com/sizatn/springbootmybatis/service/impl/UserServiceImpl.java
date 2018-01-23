@@ -1,4 +1,4 @@
-package com.sizatn.ssd.service.impl;
+package com.sizatn.springbootmybatis.service.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -9,42 +9,42 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sizatn.ssd.dao.secondary.UrMapper;
-import com.sizatn.ssd.entity.User;
-import com.sizatn.ssd.service.UserService;
+import com.sizatn.springbootmybatis.dao.UserMapper;
+import com.sizatn.springbootmybatis.entity.User;
+import com.sizatn.springbootmybatis.service.UserService;
 
-@Service("urService")
-public class UrServiceImpl implements UserService {
+@Service("userService")
+public class UserServiceImpl implements UserService {
 
-	@Resource(name = "urMapper")
-	private UrMapper urMapper;
+	@Resource(name = "userMapper")
+	private UserMapper userMapper;
 
 	@Override
 	public PageInfo<Map<String, Object>> getUserList() {
 		PageHelper.startPage(1, 2);
-		List<Map<String, Object>> list = urMapper.getUserList();
+		List<Map<String, Object>> list = userMapper.getUserList();
 		PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String, Object>>(list);
 		return pageInfo;
 	}
 
 	@Override
 	public int saveUser(User user) {
-		return urMapper.saveUser(user);
+		return userMapper.saveUser(user);
 	}
 
 	@Override
 	public Map<String, Object> getUser(String userNo) {
-		return urMapper.getUser(userNo);
+		return userMapper.getUser(userNo);
 	}
 
 	@Override
 	public int updateUser(User user) {
-		return urMapper.updateUser(user);
+		return userMapper.updateUser(user);
 	}
 
 	@Override
 	public int deleteUser(String userNo) {
-		return urMapper.deleteUser(userNo);
+		return userMapper.deleteUser(userNo);
 	}
 
 }

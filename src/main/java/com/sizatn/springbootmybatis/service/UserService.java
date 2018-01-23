@@ -1,9 +1,9 @@
-package com.sizatn.ssd.service;
+package com.sizatn.springbootmybatis.service;
 
 import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
-import com.sizatn.ssd.entity.User;
+import com.sizatn.springbootmybatis.entity.User;
 
 public interface UserService {
 

@@ -1,4 +1,51 @@
+server: 
+  context-path: /sm
+  port: 8090
+
 spring: 
-  profiles: 
-    #active: dev
-    active: pro
+  datasource:
+    url: jdbc:mysql://192.168.0.110:3306/main_smmsdemo
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    #type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 10
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 5
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  http: 
+    encoding: 
+      charset: utf-8
+    jackson: 
+      date-format: yyyy-mm-dd hh:mm:ss 
+      timezone: asia/shanghai
+    resources: 
+      chain: 
+        enabled: true
+      
+mybatis: 
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.sizatn.springbootmybatis.entity
+  configuration: 
+    callSettersOnNulls: true
+    jdbcTypeForNull: NULL
+    autoMappingBehavior: FULL
+
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+    
+logging: 
+  config: classpath:logback-boot.xml

@@ -1,4 +1,4 @@
-package com.sizatn.ssd.swagger;
+package com.sizatn.springbootmybatis.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sizatn.ssd.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.sizatn.springbootmybatis.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
