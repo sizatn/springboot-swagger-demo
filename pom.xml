@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.sizatn</groupId>
-	<artifactId>springbootmybatis</artifactId>
+	<artifactId>springboot-swagger-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>springbootmybatis Maven Webapp</name>
+	<name>springboot-swagger-demo Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<parent>
@@ -23,7 +23,12 @@
 		<druid.version>1.1.0</druid.version>
 		<pagehelper.version>1.1.2</pagehelper.version>
 		<mapper.version>3.4.2</mapper.version>
+		<redis.version>1.4.7.RELEASE</redis.version>
+		<netty.version>4.0.50.Final</netty.version>
 		<commons.lang3.version>3.6</commons.lang3.version>
+		<redis.boot.version>1.4.7.RELEASE</redis.boot.version>
+		<shiro.version>1.4.0</shiro.version>
+		<dubbo.boot.version>1.0.0</dubbo.boot.version>
 		<guava.version>23.6-jre</guava.version>
 	</properties>
 
@@ -40,12 +45,27 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
 
 		<dependency>
@@ -70,8 +90,19 @@
 		</dependency>
 
 		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
 		</dependency>
 
 		<dependency>
@@ -116,6 +147,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>io.dubbo.springboot</groupId>
+			<artifactId>spring-boot-starter-dubbo</artifactId>
+			<version>${dubbo.boot.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
@@ -127,11 +164,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -141,7 +173,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>springbootmybatis</finalName>
+		<finalName>ssd</finalName>
 	</build>
 
 </project>

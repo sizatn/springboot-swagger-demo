@@ -1,4 +1,4 @@
-package com.sizatn.springbootmybatis.entity;
+package com.sizatn.ssd.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -19,24 +19,24 @@ import io.swagger.annotations.ApiModelProperty;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -1666005991691679694L;
-
+	
 	private int id;
 	private String userNo;
 	private String userName;
 	private String password;
-
+	
 	/** male:"0" female:"1" */
 	private String gender;
 	private String phone;
 	private String mobile;
-
+	
 	/** yes:"0" no:"1" */
 	private String enabled;
 	private Timestamp createDate;
 	private Timestamp updateDate;
 
 	public User() {
-
+		
 	}
 
 	public User(int id, String userNo, String userName, String password, String gender, String phone, String mobile,
@@ -154,5 +154,5 @@ public class User implements Serializable {
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
-
+	
 }
