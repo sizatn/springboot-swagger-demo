@@ -2,12 +2,13 @@ package com.sizatn.ssd.configuration;
 
 import java.lang.reflect.Method;
 
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheManager.RedisCacheManagerBuilder;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -38,11 +39,8 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
 	}
 
 	@Bean
-	public CacheManager cacheManager(RedisTemplate<String, String> redisTemplate) {
-		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-		// Number of seconds before expiration. Defaults to unlimited (0)
-		cacheManager.setDefaultExpiration(1800);
-		return cacheManager;
+	public RedisCacheManager cacheManager(RedisConnectionFactory factory) {
+		return RedisCacheManagerBuilder.fromConnectionFactory(factory).build();
 	}
 
 	@Bean
