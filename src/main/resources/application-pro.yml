@@ -60,13 +60,15 @@ spring:
     hostName: 192.168.43.216
     port: 6379
     # Login password of the redis server.
-    password: 
+    password: foobared
     timeout: 0
-    pool: 
-      max-active: 8
-      max-idle: 8
-      min-idle: 0
-      max-wait: -1
+    lettuce: 
+      pool: 
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+        shutdown-timeout: 100
     sentinel: 
       # Name of Redis server.
       master:
