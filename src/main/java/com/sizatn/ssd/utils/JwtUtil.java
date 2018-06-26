@@ -1,10 +1,13 @@
 package com.sizatn.ssd.utils;
 
 import java.util.Date;
+import java.util.Map;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtUtil {
@@ -15,11 +18,12 @@ public class JwtUtil {
 	private static final long EXPIRE_TIME = 1 * 60 * 60 * 1000;
 
 	/**
-	 * 校验token是否正确
-	 * 
 	 * @param token
-	 *            密钥
+	 * @param username
 	 * @return 是否正确
+	 * @desc 校验token是否正确
+	 * @author sizatn
+	 * @date Jun 26, 2018
 	 */
 	@SuppressWarnings("unused")
 	public static boolean verify(String token, String username) {
@@ -32,15 +36,28 @@ public class JwtUtil {
 			return false;
 		}
 	}
+	
+	/**
+	 * @param token
+	 * @return token中包含的claim信息
+	 * @desc 获得token中的信息无需secret解密也能获得
+	 * @author sizatn
+	 * @date Jun 26, 2018
+	 */
+	public static Map<String, Claim> getClaims(String token) {
+		try {
+			return JWT.decode(token).getClaims();
+		} catch (JWTDecodeException e) {
+			return null;
+		}
+	}
 
 	/**
-	 * 生成签名，1小时后过期
-	 * 
-	 * @param username
-	 *            用户名
-	 * @param secret
-	 *            用户的密码
+	 * @param username 用户名
 	 * @return 加密的token
+	 * @desc 生成签名，1小时后过期
+	 * @author sizatn
+	 * @date Jun 26, 2018
 	 */
 	public static String create(String username) {
 		try {
