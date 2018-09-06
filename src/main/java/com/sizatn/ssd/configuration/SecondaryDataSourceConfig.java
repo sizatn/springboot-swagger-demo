@@ -6,14 +6,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
@@ -51,9 +50,10 @@ public class SecondaryDataSourceConfig {
 //	}
 
 	@Bean(name = "secondaryDataSource")
-	@ConfigurationProperties(prefix = "spring.datasource.secondary")
+	@ConfigurationProperties(prefix = "spring.datasource.druid.secondary")
 	public DataSource secondaryDataSource() {
-		return DataSourceBuilder.create().type(DruidDataSource.class).build();
+		return DruidDataSourceBuilder.create().build();
+//		return DataSourceBuilder.create().type(DruidDataSource.class).build();
 //		return secondaryDataSourceProperties().initializeDataSourceBuilder().type(DruidDataSource.class).build();
 	}
 
