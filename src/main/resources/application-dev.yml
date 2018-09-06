@@ -69,7 +69,7 @@ spring:
       port: 20880
       
 #mybatis: 
-#  mapperLocations: classpath:mapper/*.xml
+#  mapperLocations: classpath*:mapper/*.xml
 #  typeAliasesPackage: com.sizatn.ssd.entity
 
 pagehelper: 
