@@ -1,5 +1,6 @@
 server: 
-  context-path: /ssd
+  servlet: 
+    context-path:  /ssd
   port: 8090
 
 spring: 

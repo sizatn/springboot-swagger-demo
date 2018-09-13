@@ -1,12 +1,13 @@
 server: 
-  context-path: /ssd
+  servlet: 
+    context-path:  /ssd
   port: 8090
 
 spring: 
   datasource: 
     druid: 
       primary: 
-        url: jdbc:mysql://192.168.43.132:3306/main_smmsdemo
+        url: jdbc:mysql://192.168.0.105:3306/main_smmsdemo
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
@@ -25,7 +26,7 @@ spring:
         pool-prepared-statements: true
         max-open-prepared-statements: 20
       secondary: 
-        url: jdbc:mysql://192.168.43.132:3306/target_smmsdemo
+        url: jdbc:mysql://192.168.0.105:3306/target_smmsdemo
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
@@ -56,17 +57,17 @@ spring:
     type: EHCACHE
     ehcache: 
       config: classpath:ehcache.xml
-  dubbo: 
-    scan: com.sizatn.ssd.dubbo
-    application: 
-      name: provider
-    registry: 
-      protocol: zookeeper
-      address: 200.20.2.160
-      port: 2181
-    protocol: 
-      name: dubbo
-      port: 20880
+#  dubbo: 
+#    scan: com.sizatn.ssd.dubbo
+#    application: 
+#      name: provider
+#    registry: 
+#      protocol: zookeeper
+#      address: 200.20.2.160
+#      port: 2181
+#    protocol: 
+#      name: dubbo
+#      port: 20880
       
 #mybatis: 
 #  mapperLocations: classpath*:mapper/*.xml

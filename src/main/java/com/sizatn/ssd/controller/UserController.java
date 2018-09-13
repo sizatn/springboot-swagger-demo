@@ -21,7 +21,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "用户管理APIs")
+@Api(tags = "用户管理", description="用户管理")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {

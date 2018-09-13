@@ -21,7 +21,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "ur管理APIs")
+@Api(tags = "ur管理", description = "ur管理")
 @RestController
 @RequestMapping(value = "/ur")
 public class UrController {
